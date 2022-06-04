@@ -14,13 +14,12 @@ contract RacingCarFactory is Ownable {
 
     RacingCar[] public racingCars;
 
-    mapping(uint => address) racingCatToOwner;
+    mapping(uint => address) racingCarToOwner;
     mapping(address => uint) ownerRacingCarsCount;
 
     function _createRacingCar(string memory _name) internal {
         racingCars.push(RacingCar(_name, 1, uint32(block.timestamp + cooldownTime)));
-        uint id = racingCars.length - 1;
-        racingCatToOwner[id] = msg.sender;
+        racingCarToOwner[racingCars.length - 1] = msg.sender;
         ownerRacingCarsCount[msg.sender]++;
     }
 
