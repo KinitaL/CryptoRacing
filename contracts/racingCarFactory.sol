@@ -20,7 +20,7 @@ contract RacingCarFactory is Ownable {
     mapping(address => uint) ownerRacingCarsCount;
 
     function _createRacingCar(string memory _name) internal {
-        racingCars.push(RacingCar(_name, 1, uint32(block.timestamp + cooldownTime), 0, 0));
+        racingCars.push(RacingCar(_name, 1, uint32(block.timestamp), 0, 0));
         racingCarToOwner[racingCars.length - 1] = msg.sender;
         ownerRacingCarsCount[msg.sender]++;
     }

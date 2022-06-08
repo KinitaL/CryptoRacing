@@ -17,7 +17,7 @@ contract RacingCarTuning is RacingCarFactory {
         _racingCar.readyTime = uint32(block.timestamp + cooldownTime);
     }
 
-    function tuningRacingCar(uint _carId) public onlyOwnerOfCar(_carId) {
+    function _tuningRacingCar(uint _carId) internal onlyOwnerOfCar(_carId) {
         RacingCar storage myCar = racingCars[_carId];
         require(_isReady(myCar));
         myCar.level++;

@@ -10,6 +10,11 @@ contract RacingCarHelper is RacingCarTuning {
         _;
     }
 
+    function withdraw() external onlyOwner {
+        address  _owner = owner();
+        payable(_owner).transfer(address(this).balance);
+    }
+
     function setLevelUpFee(uint _fee) external onlyOwner {
         levelUpFee = _fee;
     }
